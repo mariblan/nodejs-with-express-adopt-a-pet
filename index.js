@@ -25,19 +25,15 @@ app.get('/animals/:pet_type', (req, res) => {
     return key === pet_type;
   });
 
-  // console.log(key);
-  // console.log(pets[key])
+ 
   const animals = pets[key];
-  // console.log(animals);
   let html = '';
   html += '<ul>';
   for (let i = 0; i < animals.length; i++) {
-    //   console.log(animals[i].name);
     html += `<li>${animals[i].name}</li>`;
   }
   html += '</ul>';
 
-//   console.log(html);
   res.send(`
           <h1>List of ${pet_type}:</h1>
           ${html}
