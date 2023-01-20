@@ -40,7 +40,7 @@ app.get('/animals/:pet_type', (req, res) => {
 //   console.log(html);
   res.send(`
           <h1>List of ${pet_type}:</h1>
-          <ul>${html}</ul>
+          ${html}
           `);
 });
 
