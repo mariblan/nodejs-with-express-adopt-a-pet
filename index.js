@@ -16,12 +16,12 @@ app.get('/', (req, res) => {
     `);
 });
 
-app.get('/animals', (req, res) => {
+app.get('/animals/:pet_type', (req, res) => {
+  const { pet_type } = req.params;
   res.send(`
-        <h1>List of pets:</h1>
-        `);
+          <h1>List of ${pet_type}:</h1>
+          `);
 });
-
 
 app.listen(port, () => {
   console.log(`App listening at http://localhost:${port}`);
