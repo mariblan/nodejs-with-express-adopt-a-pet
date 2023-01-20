@@ -2,6 +2,8 @@ const express = require('express');
 const app = express();
 const port = 4000;
 
+// With the string interpolation you can return more than one line of code
+// You can write HTML code in the string and it will be rendered in the browser
 app.get('/', (req, res) => {
   res.send(`
     <h1>Adopt Pet!</h1>
