@@ -25,18 +25,49 @@ app.get('/animals/:pet_type', (req, res) => {
     return key === pet_type;
   });
 
- 
   const animals = pets[key];
+
   let html = '';
   html += '<ul>';
   for (let i = 0; i < animals.length; i++) {
-    html += `<li>${animals[i].name}</li>`;
+    console.log(animals[i].name);
+    let index = animals.indexOf(animals[i]);
+
+    html += `<li><a href="/animals/${pet_type}/${index}">${animals[i].name}</a></li>`;
   }
   html += '</ul>';
 
   res.send(`
           <h1>List of ${pet_type}:</h1>
           ${html}
+          `);
+});
+
+app.get('/animals/:pet_type/:pet_id', (req, res) => {
+  const { pet_type, pet_id } = req.params;
+
+  const key = Object.keys(pets).find((key) => {
+    return key === pet_type;
+  });
+
+  const animals = pets[key];
+
+  const pet = animals.find((animal, index) => {
+    if (animals[index] === pet_id) {
+      return animal;
+    }
+    return animal;
+  });
+  console.log('pet', pet);
+  res.send(`
+          <img src="${pet.url}" alt="${pet.name}"/>
+          <h1>${pet.name}</h1>
+          <p>${pet.description}</p>
+          <ul>
+              <li>Age: ${pet.age}</li>
+              <li>Breed: ${pet.breed}</li>
+          </ul>
+
           `);
 });
 
